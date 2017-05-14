@@ -1,0 +1,13 @@
+public int removeDuplicates(int[] nums) {
+        int pOne = 0;
+        int pTwo = 1;
+        int len = nums.length;
+        while(pTwo < len){
+            if(nums[pTwo] != nums[pOne]){
+                pOne++;
+                nums[pOne] = nums[pTwo];
+            }
+            pTwo++;
+        }
+        return pOne + 1;
+    }

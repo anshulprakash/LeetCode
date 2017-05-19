@@ -1,4 +1,6 @@
 /* https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/#/description */
+
+/* BRUTE FORCE */
 public class Solution {
     public int[] twoSum(int[] numbers, int target) {
         int len = numbers.length;
@@ -25,5 +27,20 @@ public class Solution {
             }
         }
         return indices;
+    }
+}
+
+/* HASH MAP */
+public class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        Map<Integer, Integer> numHash = new HashMap<>();
+        
+        for(int i = 0 ; i < numbers.length ; i++){
+            int complement = target - numbers[i];
+            if(numHash.get(complement) != null && numHash.get(complement)!=i){
+                return new int [] {numHash.get(complement)+1, i+1};
+            }
+            numHash.put(numbers[i],i);
+        }throw new IllegalArgumentException("No two sum solution");
     }
 }
